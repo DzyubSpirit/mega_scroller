@@ -1,3 +1,5 @@
+// console.log(сhrome);
+
 console.log('1');
 var recognition;
 var scrolling = false;
@@ -156,6 +158,32 @@ function MyRecognition() {
 				scrollingTimer = setInterval(function() { window.scrollTo(0, window.scrollY+speed); }, 30);
 			} else {
 				scrollingTimer = setInterval(function() { window.scrollTo(0, window.scrollY-speed); }, 30);
+			}
+		} else if (["лайк","like", "lois", "лойс", "палец вверх"].indexOf(event.results[0][0].transcript) != -1) {
+			//vk
+			// var likes = document.getElementsByClassName('post_like fl_r');
+			// for (var i = 0; i < likes.length; i++) {
+			// 	if (scrollY > likes[i].getBoundingClientRect().top) {
+			// 		// likes[i].click();
+			// 		// console.log(likes[i].onclick);
+			// 		var str = likes[i].outerHTML;
+			// 		str = str.slice(str.indexOf('onclick="')+9, str.indexOf('\'); event'));
+			// 		var key1 = str.slice(str.indexOf('(\'')+2,str.indexOf('\','));
+			// 		var key2 = str.slice(str.indexOf(', \'')+3,str.indexOf('\')'));
+			// 		console.log(window.wall);//.like(key1, key2);
+			// 		break;
+			// 	}
+			// }
+
+			var likes = document.getElementsByClassName('UFILikeLink');
+			for (var i = 0; i < likes.length; i++) {
+				if (likes[i].getAttribute('aria-label') &&	likes[i].getBoundingClientRect().top >0) {
+					likes[i].click();
+					// window.scrollTo(0, likes[i].getBoundingClientRect().top);
+					// likes[i].style.backgroundColor = '#f00';
+					// console.log(likes[i]);
+					break;
+				}
 			}
 		} else {
 			if (scrolling) {
